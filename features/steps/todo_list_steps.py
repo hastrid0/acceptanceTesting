@@ -16,7 +16,7 @@ def step_impl(context, task):
 
 
 #Feature 2
-@given('the to-do list has 2 tasks')
+@given('the to-do list has 3 tasks')
 def step_impl(context):
     global to_do_list
     to_do_list = [
@@ -96,7 +96,7 @@ def step_impl(context):
     assert context.pending == 2
     
 #Feature 6
-@given('the to-do list has 2 tasks')
+@given('the to-do list has 1 task')
 def step_impl(context):
     global to_do_list
     to_do_list = [
@@ -108,7 +108,7 @@ def step_impl(context):
     with open("tareas_exportadas.json", "w", encoding="utf-8") as f:
         json.dump(to_do_list, f, indent=4, ensure_ascii=False)
 
-@then('a file named "exportadas_tareas.json" should be created with 1 task inside')
+@then('a file named "tareas_exportadas.json" should be created with 1 task inside')
 def step_impl(context):
     assert os.path.exists("exportadas_tareas.json")
     with open("tareas_exportadas.json", "r", encoding="utf-8") as f:
