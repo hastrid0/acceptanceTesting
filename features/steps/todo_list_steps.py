@@ -1,6 +1,6 @@
 to_do_list = []
 #Feature 1
-@given('the to-do list is empty')
+@given('the To-Do list is empty')
 def step_impl(context):
     global to_do_list
     to_do_list = []
@@ -16,7 +16,7 @@ def step_impl(context, task):
 
 
 #Feature 2
-@given('the to-do list has 3 tasks')
+@given('the To-Do list has 3 tasks')
 def step_impl(context):
     global to_do_list
     to_do_list = [
@@ -31,21 +31,21 @@ def step_impl(context):
     # Simulación, no hace nada, solo valida el paso
     pass
 
-@then('the system should display 2 tasks with their titles and descriptions')
+@then('the system display 3 tasks with their id, title, description,completed_status')
 def step_impl(context):
     assert len(to_do_list) == 3
     for task in to_do_list:
         assert "id" in task and "title" in task and "description" in task
         
 #Feature 3
-@given('the to-do list has a task titled "Workshop IS2"')
+@given('the To-Do list has a task titled "Workshop IS2" with the id "{id}"')
 def step_impl(context):
     global to_do_list
     to_do_list = [
         {"id":"1","title": "Workshop IS2", "description": "Organize and vacuum", "completed": False}
     ]
 
-@when('the user marks the task "Workshop IS2" as completed')
+@when('the user gives the task "Workshop IS2"s "{id}"')
 def step_impl(context):
     for task in to_do_list:
         if task["id"] == "1":
@@ -58,7 +58,7 @@ def step_impl(context):
     assert task["completed"] is True
     
 #Feature 4
-@given('the to-do list has multiple tasks')
+@given('the To-Do list has multiple tasks')
 def step_impl(context):
     global to_do_list
     to_do_list = [
@@ -96,14 +96,14 @@ def step_impl(context):
     assert context.pending == 2
     
 #Feature 6
-@given('the to-do list has 1 task')
+@given('the To-Do list has 1 task')
 def step_impl(context):
     global to_do_list
     to_do_list = [
         {"id":"1","title": "Export 1", "description": "", "completed": False},
     ]
 
-@when('the user exports the task list to a JSON file')
+@when('the user exports the to-do list to a JSON file')
 def step_impl(context):
     with open("tareas_exportadas.json", "w", encoding="utf-8") as f:
         json.dump(to_do_list, f, indent=4, ensure_ascii=False)
