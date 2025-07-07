@@ -12,7 +12,7 @@ Feature: To-Do List Management
         Then the system display the 3 task with their id, title, description,completed_status
     @MarkTaskComplete
     Scenario: Mark a task as completed
-        Given the To-Do list has a task titled "Workshop IS2" with the id "{id}"
+        Given the To-Do list has a task titled "Workshop IS2" with the id "1"
         When the user gives the task "Workshop IS2"s id
         Then the task "Workshop IS2" should be marked as completed
     @CleanToDoList
